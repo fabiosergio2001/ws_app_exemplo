@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      <img src="assets/imgs/lg_websupply_mail.gif" />
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>  
+  <ion-searchbar [(ngModel)]="searchTerm"
+                  (ionInput)="filterItems()"
+                  placeholder="Type here...">
+  </ion-searchbar>
+
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown"
+                           pullingText="Pull to refresh"
+                           refreshingSpinner="circles"
+                           refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <ion-list>
+    <button ion-item *ngFor="let processo of processos" (click)="itemSelected(processo)">
+      <p><b>N. WS:</b> {{ processo.NUM_WS }} | <b>N. SAP:</b> {{ processo.NUM_WS }}</p>
+      <p><b>DATA:</b> {{ processo.DATA }} </p>
+      <h2><b>{{ processo.TITULO }}</b></h2>
+      <h2><b>R$ {{ processo.TOTAL }}</b></h2>
+    </button>
+  </ion-list>
+</ion-content>
