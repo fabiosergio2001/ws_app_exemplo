@@ -23,7 +23,7 @@
       <p><b>N. WS:</b> {{ processo.NUM_WS }} | <b>N. SAP:</b> {{ processo.NUM_WS }}</p>
       <p><b>DATA:</b> {{ processo.DATA }} </p>
       <h2><b>{{ processo.TITULO }}</b></h2>
-      <h2><b>R$ {{ processo.TOTAL }}</b></h2>
+      <h2><b>{{ processo.TOTAL | currency:'BRL' }}</b></h2>
     </button>
   </ion-list>
 </ion-content>

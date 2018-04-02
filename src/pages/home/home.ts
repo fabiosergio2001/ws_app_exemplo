@@ -53,13 +53,13 @@ export class HomePage {
   }
 
   filterItems() {
-    this.processos = this.noFilter;
+    this.processos = [];
 
-    alert('teste');
+    for (var i = 0; i < this.noFilter.length ; i++) {
+      if (this.noFilter[i].TITULO.toLowerCase().indexOf(this.searchTerm.toLowerCase()) > -1) {
+        this.processos.push(this.noFilter[i]);
+      }
 
-    
-    //this.processos = this.noFilter.filter((item) => {
-    //  return item.data.title.toLowerCase().indexOf(this.searchTerm.toLowerCase()) > -1;
-    //});
+    }    
   }
 }
