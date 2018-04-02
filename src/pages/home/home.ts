@@ -55,9 +55,7 @@ export class HomePage {
   filterItems() {
     this.processos = this.noFilter;
 
-    alert(this.processos.filter(function (el) {
-      return el.TITULO = "teste";
-    }));
+    alert('teste');
 
     
     //this.processos = this.noFilter.filter((item) => {
