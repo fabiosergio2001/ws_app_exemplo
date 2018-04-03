@@ -60,7 +60,7 @@ export class HomePage {
         this.processos.push(this.noFilter[i]);
       }
 
-    }    
+    }     
   }
 
 
