@@ -1,21 +1,20 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>
+    <ion-title style="height:60px"> 
       <img src="assets/imgs/lg_websupply_mail.gif" />
     </ion-title>
+    <ion-searchbar [(ngModel)]="searchTerm"
+      (ionInput)="filterItems()"
+      placeholder="Busca por Título...">
+    </ion-searchbar>
   </ion-navbar>
 </ion-header>
 <ion-content>  
-  <ion-searchbar [(ngModel)]="searchTerm"
-                  (ionInput)="filterItems()"
-                  placeholder="Type here...">
-  </ion-searchbar>
-
   <ion-refresher (ionRefresh)="doRefresh($event)">
     <ion-refresher-content pullingIcon="arrow-dropdown"
-                           pullingText="Pull to refresh"
+                           pullingText="Puxe para atualizar"
                            refreshingSpinner="circles"
-                           refreshingText="Refreshing...">
+                           refreshingText="Atualizando...">
     </ion-refresher-content>
   </ion-refresher>
   <ion-list>
@@ -26,4 +25,9 @@
       <h2><b>{{ processo.TOTAL | currency:'BRL' }}</b></h2>
     </button>
   </ion-list>
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content
+       loadingText="Carregando mais processos...">
+    </ion-infinite-scroll-content>
+ </ion-infinite-scroll> 
 </ion-content>
