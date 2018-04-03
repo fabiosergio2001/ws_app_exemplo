@@ -12,7 +12,7 @@ export class HomePage {
   public processos: Array<any>;
   public noFilter: Array<any>;
   public searchTerm: string = ""; 
-  private url: string = "http://homws.websupply.com.br/WS_REST_Exemplo/api/values/";
+  private url: string = "http://homws.websupply.com.br/WS_API_Exemplo/api/values/";
 
   constructor(public navCtrl: NavController,
     public http: Http,
@@ -62,4 +62,17 @@ export class HomePage {
 
     }    
   }
+
+
+  doInfinite(infiniteScroll) {
+
+    let paramsUrl = '/'+this.processos[this.noFilter.length-1].NUM_WS;
+
+      this.http.get(this.url + paramsUrl).map(res => res.json())
+        .subscribe(data => {
+          this.processos = this.processos.concat(data);
+          infiniteScroll.complete();
+        }); 
+  }  
+
 }
